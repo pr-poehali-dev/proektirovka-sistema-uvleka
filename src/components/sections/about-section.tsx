@@ -83,6 +83,13 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           }`}
           style={{ transitionDelay: "750ms" }}
         >
+          <div className="mb-4 flex flex-wrap gap-2">
+            {["#ГастроТур", "#Муром", "#КулинарныйТур"].map((tag) => (
+              <span key={tag} className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/50">
+                {tag}
+              </span>
+            ))}
+          </div>
           <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection?.(3)}>
             Забронировать тур
           </MagneticButton>

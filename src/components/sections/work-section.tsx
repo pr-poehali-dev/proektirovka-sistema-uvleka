@@ -20,6 +20,14 @@ export function WorkSection() {
           <p className="font-mono text-sm text-foreground/60 md:text-base">/ Программа экскурсий</p>
         </div>
 
+        <div className="mb-4 flex flex-wrap gap-2">
+          {["#ГастроТур", "#Муром", "#КулинарныйТур"].map((tag) => (
+            <span key={tag} className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/50">
+              {tag}
+            </span>
+          ))}
+        </div>
+
         <div className="mb-6 flex flex-wrap items-center gap-3 md:mb-8">
           <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
             🕐 3–5 часов

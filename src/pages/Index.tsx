@@ -272,6 +272,13 @@ export default function Index() {
                 Тематические гастрономические экскурсии с дегустацией местных блюд, посещением фермерских хозяйств и мастер-классами по приготовлению муромских калачей и пирогов.
               </span>
             </p>
+            <div className="mb-6 flex animate-in fade-in slide-in-from-bottom-4 flex-wrap gap-2 duration-700 delay-200">
+              {["#ГастроТур", "#Муром", "#КулинарныйТур"].map((tag) => (
+                <span key={tag} className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/60 backdrop-blur-sm">
+                  {tag}
+                </span>
+              ))}
+            </div>
             <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
               <MagneticButton
                 size="lg"
