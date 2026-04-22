@@ -1,6 +1,27 @@
 import { MagneticButton } from "@/components/magnetic-button"
 import { useReveal } from "@/hooks/use-reveal"
 
+const reviews = [
+  {
+    name: "Анна Соколова",
+    city: "Москва",
+    rating: 5,
+    text: "Невероятный опыт! Мастер-класс по калачам оставил незабываемые впечатления. Привезла домой не только выпечку, но и массу тёплых воспоминаний.",
+  },
+  {
+    name: "Дмитрий Орлов",
+    city: "Нижний Новгород",
+    rating: 5,
+    text: "Фермерский тур — лучшее, что мы делали всей семьёй. Дети в восторге от коров и свежего молока прямо с фермы. Спасибо Ксении и Еве!",
+  },
+  {
+    name: "Марина Белова",
+    city: "Владимир",
+    rating: 5,
+    text: "Гастрономический вечер в этно-стиле — это что-то особенное. Атмосфера, блюда, рассказы о традициях — всё на высшем уровне.",
+  },
+]
+
 export function AboutSection({ scrollToSection }: { scrollToSection?: (index: number) => void }) {
   const { ref, isVisible } = useReveal(0.3)
 
@@ -14,11 +35,11 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           {/* Left side - Story */}
           <div>
             <div
-              className={`mb-6 transition-all duration-700 md:mb-12 ${
+              className={`mb-6 transition-all duration-700 md:mb-8 ${
                 isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
               }`}
             >
-              <h2 className="mb-3 font-sans text-3xl font-light leading-[1.1] tracking-tight text-foreground md:mb-4 md:text-6xl lg:text-7xl">
+              <h2 className="mb-3 font-sans text-3xl font-light leading-[1.1] tracking-tight text-foreground md:mb-4 md:text-5xl lg:text-6xl">
                 Дарим
                 <br />
                 вкус и
@@ -28,22 +49,42 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
             </div>
 
             <div
-              className={`space-y-3 transition-all duration-700 md:space-y-4 ${
+              className={`mb-6 space-y-3 transition-all duration-700 md:space-y-4 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
               style={{ transitionDelay: "200ms" }}
             >
-              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
+              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-base">
                 Мы — Ксения Кудряшова и Ева Романова, основательницы МуромГастроТур. Уже 6 лет мы открываем гостям настоящий вкус Мурома: его традиции, людей и историю через еду.
               </p>
-              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
+              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-base">
                 Нам важно не просто показать город, а подарить незабываемые эмоции — и при этом заботиться об окружающей среде. Каждый тур создаётся с душой и любовью к своему делу.
               </p>
             </div>
+
+            {/* Отзывы */}
+            <div
+              className={`space-y-3 transition-all duration-700 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
+              <p className="font-mono text-xs text-foreground/50">/ Отзывы гостей</p>
+              {reviews.map((review, i) => (
+                <div key={i} className="border-l border-foreground/20 pl-3">
+                  <p className="mb-1 text-xs leading-relaxed text-foreground/70 md:text-sm">«{review.text}»</p>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs text-foreground/50">{review.name}</span>
+                    <span className="font-mono text-xs text-foreground/30">· {review.city}</span>
+                    <span className="text-xs text-foreground/40">{"★".repeat(review.rating)}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Right side - Stats with creative layout */}
-          <div className="flex flex-col justify-center space-y-6 md:space-y-12">
+          {/* Right side - Stats */}
+          <div className="flex flex-col justify-center space-y-6 md:space-y-10">
             {[
               { value: "6", label: "Лет", sublabel: "На рынке гастротуризма", direction: "right" },
               { value: "4", label: "Тура", sublabel: "Уникальных программы", direction: "left" },
@@ -74,28 +115,30 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
                 </div>
               )
             })}
-          </div>
-        </div>
 
-        <div
-          className={`mt-8 flex flex-wrap gap-3 transition-all duration-700 md:mt-16 md:gap-4 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-          }`}
-          style={{ transitionDelay: "750ms" }}
-        >
-          <div className="mb-4 flex flex-wrap gap-2">
-            {["#ГастроТур", "#Муром", "#КулинарныйТур"].map((tag) => (
-              <span key={tag} className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/50">
-                {tag}
-              </span>
-            ))}
+            <div
+              className={`flex flex-wrap gap-3 transition-all duration-700 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+              }`}
+              style={{ transitionDelay: "750ms" }}
+            >
+              <div className="mb-2 flex flex-wrap gap-2">
+                {["#ГастроТур", "#Муром", "#КулинарныйТур"].map((tag) => (
+                  <span key={tag} className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/50">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection?.(5)}>
+                  Забронировать тур
+                </MagneticButton>
+                <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection?.(1)}>
+                  Смотреть туры
+                </MagneticButton>
+              </div>
+            </div>
           </div>
-          <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection?.(3)}>
-            Забронировать тур
-          </MagneticButton>
-          <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection?.(1)}>
-            Смотреть туры
-          </MagneticButton>
         </div>
       </div>
     </section>
