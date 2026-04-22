@@ -20,6 +20,24 @@ export function WorkSection() {
           <p className="font-mono text-sm text-foreground/60 md:text-base">/ Программа экскурсий</p>
         </div>
 
+        <div className="mb-6 flex flex-wrap items-center gap-3 md:mb-8">
+          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
+            🕐 3–5 часов
+          </span>
+          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
+            Индивидуально — 4 000–5 000 ₽/чел
+          </span>
+          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
+            Группа от 20 чел — 3 500 ₽/чел
+          </span>
+          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
+            Корпоратив — от 55 000 ₽
+          </span>
+          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
+            Семейный пакет — скидка 10%
+          </span>
+        </div>
+
         <div className="space-y-4 md:space-y-6">
           {[
             {
