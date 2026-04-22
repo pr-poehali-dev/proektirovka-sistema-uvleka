@@ -113,7 +113,12 @@ function TourCard({
           <p className="font-mono text-xs text-foreground/50 md:text-sm">{project.category}</p>
         </div>
       </div>
-      <span className="ml-4 shrink-0 font-mono text-xs text-foreground/50 group-hover:text-foreground/80 transition-colors md:text-sm">{project.price}</span>
+      <div className="ml-4 flex shrink-0 flex-col items-end gap-2">
+        <span className="font-mono text-xs text-foreground/50 group-hover:text-foreground/80 transition-colors md:text-sm">{project.price}</span>
+        <button className="rounded-full border border-foreground/30 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70 opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-foreground/20 hover:text-foreground">
+          Забронировать →
+        </button>
+      </div>
     </div>
   )
 }
