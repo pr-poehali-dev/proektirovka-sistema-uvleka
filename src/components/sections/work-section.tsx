@@ -1,5 +1,40 @@
 import { useReveal } from "@/hooks/use-reveal"
 
+const tours = [
+  {
+    number: "01",
+    title: "Традиционный Муром",
+    category: "Дегустация муромских пирогов, блинов, калачей и местных сыров · Посещение хлебокомбината · Мастер-класс по выпечке",
+    price: "от 4 000 ₽/чел",
+    direction: "left",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/4a19d197-6b3a-473d-a945-f53b476add77.jpg",
+  },
+  {
+    number: "02",
+    title: "Фермерский день",
+    category: "Поездка на фермерские хозяйства · Дегустация молока, мёда и мяса · Знакомство с процессом производства",
+    price: "от 4 000 ₽/чел",
+    direction: "right",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/bb2a9ef0-a973-4839-9309-1ec7a1e4c7d4.jpg",
+  },
+  {
+    number: "03",
+    title: "Кулинарный мастер-класс",
+    category: "Приготовление ухи по-муромски, пирожков с начинкой и муромского калача · С профессиональным шеф-поваром",
+    price: "от 4 500 ₽/чел",
+    direction: "left",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/0d146b92-e5d0-485e-a299-5bd585103781.jpg",
+  },
+  {
+    number: "04",
+    title: "Гастрономический вечер",
+    category: "Ужин в этно-стиле с блюдами муромской кухни · Рассказ об истории местных кулинарных традиций",
+    price: "от 5 000 ₽/чел",
+    direction: "right",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/603f5e82-4342-410f-937a-f616b264c879.jpg",
+  },
+]
+
 export function WorkSection() {
   const { ref, isVisible } = useReveal(0.3)
 
@@ -10,7 +45,7 @@ export function WorkSection() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
-          className={`mb-8 transition-all duration-700 md:mb-12 ${
+          className={`mb-6 transition-all duration-700 ${
             isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0"
           }`}
         >
@@ -20,7 +55,7 @@ export function WorkSection() {
           <p className="font-mono text-sm text-foreground/60 md:text-base">/ Программа экскурсий</p>
         </div>
 
-        <div className="mb-4 flex flex-wrap gap-2">
+        <div className="mb-3 flex flex-wrap gap-2">
           {["#ГастроТур", "#Муром", "#КулинарныйТур"].map((tag) => (
             <span key={tag} className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/50">
               {tag}
@@ -28,105 +63,48 @@ export function WorkSection() {
           ))}
         </div>
 
-        <div className="mb-6 flex flex-wrap items-center gap-3 md:mb-8">
-          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
-            🕐 3–5 часов
-          </span>
-          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
-            Индивидуально — 4 000–5 000 ₽/чел
-          </span>
-          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
-            Группа от 20 чел — 3 500 ₽/чел
-          </span>
-          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
-            Корпоратив — от 55 000 ₽
-          </span>
-          <span className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
-            Семейный пакет — скидка 10%
-          </span>
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          {["🕐 3–5 часов", "Индивидуально — 4 000–5 000 ₽/чел", "Группа от 20 чел — 3 500 ₽/чел", "Корпоратив — от 55 000 ₽", "Семейный пакет — скидка 10%"].map((item) => (
+            <span key={item} className="rounded-full border border-foreground/20 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70">
+              {item}
+            </span>
+          ))}
         </div>
 
-        <div className="space-y-4 md:space-y-6">
-          {[
-            {
-              number: "01",
-              title: "Традиционный Муром",
-              category: "Дегустация муромских пирогов, блинов, калачей и местных сыров · Посещение хлебокомбината · Мастер-класс по выпечке",
-              price: "от 4 000 ₽/чел",
-              direction: "left",
-            },
-            {
-              number: "02",
-              title: "Фермерский день",
-              category: "Поездка на фермерские хозяйства · Дегустация молока, мёда и мяса · Знакомство с процессом производства",
-              price: "от 4 000 ₽/чел",
-              direction: "right",
-            },
-            {
-              number: "03",
-              title: "Кулинарный мастер-класс",
-              category: "Приготовление ухи по-муромски, пирожков с начинкой и муромского калача · С профессиональным шеф-поваром",
-              price: "от 4 500 ₽/чел",
-              direction: "left",
-            },
-            {
-              number: "04",
-              title: "Гастрономический вечер",
-              category: "Ужин в этно-стиле с блюдами муромской кухни · Рассказ об истории местных кулинарных традиций",
-              price: "от 5 000 ₽/чел",
-              direction: "right",
-            },
-          ].map((project, i) => (
-            <TourCard key={i} project={project} index={i} isVisible={isVisible} />
-          ))}
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+          {tours.map((tour, i) => {
+            const getRevealClass = () => {
+              if (!isVisible) return "translate-y-12 opacity-0"
+              return "translate-y-0 opacity-100"
+            }
+
+            return (
+              <div
+                key={i}
+                className={`group relative overflow-hidden rounded-lg transition-all duration-700 ${getRevealClass()}`}
+                style={{ transitionDelay: `${i * 120}ms` }}
+              >
+                <img
+                  src={tour.image}
+                  alt={tour.title}
+                  className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-48"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <span className="mb-1 block font-mono text-xs text-foreground/50">{tour.number}</span>
+                  <h3 className="mb-0.5 font-sans text-sm font-light text-foreground leading-tight md:text-base">{tour.title}</h3>
+                  <p className="font-mono text-xs text-foreground/60">{tour.price}</p>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <button className="rounded-full border border-foreground/40 bg-black/40 px-4 py-1.5 font-mono text-xs text-foreground backdrop-blur-sm hover:bg-black/60">
+                    Забронировать →
+                  </button>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
-  )
-}
-
-function TourCard({
-  project,
-  index,
-  isVisible,
-}: {
-  project: { number: string; title: string; category: string; price: string; direction: string }
-  index: number
-  isVisible: boolean
-}) {
-  const getRevealClass = () => {
-    if (!isVisible) {
-      return project.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
-    }
-    return "translate-x-0 opacity-100"
-  }
-
-  return (
-    <div
-      className={`group flex items-center justify-between border-b border-foreground/10 py-4 transition-all duration-700 hover:border-foreground/20 md:py-6 ${getRevealClass()}`}
-      style={{
-        transitionDelay: `${index * 150}ms`,
-        marginLeft: index % 2 === 0 ? "0" : "auto",
-        maxWidth: index % 2 === 0 ? "90%" : "95%",
-      }}
-    >
-      <div className="flex items-baseline gap-4 md:gap-8">
-        <span className="font-mono text-sm text-foreground/30 transition-colors group-hover:text-foreground/50 md:text-base">
-          {project.number}
-        </span>
-        <div>
-          <h3 className="mb-1 font-sans text-xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-2 md:text-2xl lg:text-3xl">
-            {project.title}
-          </h3>
-          <p className="font-mono text-xs text-foreground/50 md:text-sm">{project.category}</p>
-        </div>
-      </div>
-      <div className="ml-4 flex shrink-0 flex-col items-end gap-2">
-        <span className="font-mono text-xs text-foreground/50 group-hover:text-foreground/80 transition-colors md:text-sm">{project.price}</span>
-        <button className="rounded-full border border-foreground/30 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70 opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-foreground/20 hover:text-foreground">
-          Забронировать →
-        </button>
-      </div>
-    </div>
   )
 }
