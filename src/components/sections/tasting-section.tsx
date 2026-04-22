@@ -8,6 +8,7 @@ const tastings = [
     menu: "Муромские калачи, ржаной хлеб, пироги с различными начинками, бублики",
     description: "Экскурсия по производству с дегустацией свежей выпечки прямо из печи.",
     direction: "left",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/4a37b678-834e-4153-8ed0-79d3f5ae3e41.jpg",
   },
   {
     number: "02",
@@ -16,6 +17,7 @@ const tastings = [
     menu: "Фермерский сыр, домашнее молоко, мёд разных сортов, копчёное мясо",
     description: "Знакомство с натуральными продуктами местных фермеров в живописной сельской обстановке.",
     direction: "right",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/bb2a9ef0-a973-4839-9309-1ec7a1e4c7d4.jpg",
   },
   {
     number: "03",
@@ -24,6 +26,7 @@ const tastings = [
     menu: "Уха по-муромски, пельмени ручной лепки, блины с икрой, морсы и кисели",
     description: "Традиционная кухня в атмосфере русского быта XIX века с рассказом о кулинарных традициях.",
     direction: "left",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/c372bc24-be2f-418f-8d13-add24c547383.jpg",
   },
 ]
 
@@ -55,35 +58,32 @@ export function TastingSection() {
           ))}
         </div>
 
-        <div className="space-y-4 md:space-y-5">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
           {tastings.map((tasting, i) => {
             const getRevealClass = () => {
-              if (!isVisible) return tasting.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
-              return "translate-x-0 opacity-100"
+              if (!isVisible) return "translate-y-12 opacity-0"
+              return "translate-y-0 opacity-100"
             }
 
             return (
               <div
                 key={i}
-                className={`group border-b border-foreground/10 py-4 transition-all duration-700 hover:border-foreground/20 md:py-5 ${getRevealClass()}`}
-                style={{ transitionDelay: `${i * 150}ms` }}
+                className={`group relative overflow-hidden rounded-lg transition-all duration-700 ${getRevealClass()}`}
+                style={{ transitionDelay: `${i * 120}ms` }}
               >
-                <div className="flex items-start gap-4 md:gap-8">
-                  <span className="mt-1 font-mono text-sm text-foreground/30 group-hover:text-foreground/50 transition-colors md:text-base">
-                    {tasting.number}
-                  </span>
-                  <div className="flex-1">
-                    <div className="mb-1 flex flex-wrap items-baseline gap-3">
-                      <h3 className="font-sans text-xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-2 md:text-2xl lg:text-3xl">
-                        {tasting.title}
-                      </h3>
-                      <span className="font-mono text-xs text-foreground/40">📍 {tasting.location}</span>
-                    </div>
-                    <p className="mb-1 font-mono text-xs text-foreground/50 md:text-sm">{tasting.description}</p>
-                    <p className="font-mono text-xs text-foreground/40">
-                      <span className="text-foreground/60">Меню: </span>{tasting.menu}
-                    </p>
-                  </div>
+                <img
+                  src={tasting.image}
+                  alt={tasting.title}
+                  className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-56"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <span className="mb-1 block font-mono text-xs text-foreground/50">{tasting.number} · 📍 {tasting.location}</span>
+                  <h3 className="mb-1 font-sans text-lg font-light text-foreground leading-tight">{tasting.title}</h3>
+                  <p className="mb-1 font-mono text-xs text-foreground/60 leading-relaxed">{tasting.description}</p>
+                  <p className="font-mono text-xs text-foreground/50">
+                    <span className="text-foreground/70">Меню: </span>{tasting.menu}
+                  </p>
                 </div>
               </div>
             )

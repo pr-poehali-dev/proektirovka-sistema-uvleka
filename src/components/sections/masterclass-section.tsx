@@ -8,6 +8,7 @@ const masterclasses = [
     duration: "2–3 часа",
     price: "от 2 500 ₽/чел",
     direction: "left",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/6be2cf4e-d609-4403-99b5-7dd7546566d7.jpg",
   },
   {
     number: "02",
@@ -16,6 +17,7 @@ const masterclasses = [
     duration: "2–3 часа",
     price: "от 3 000 ₽/чел",
     direction: "right",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/9603d2c2-dfcf-49f0-9643-36c862913a50.jpg",
   },
   {
     number: "03",
@@ -24,6 +26,7 @@ const masterclasses = [
     duration: "3–4 часа",
     price: "от 2 800 ₽/чел",
     direction: "left",
+    image: "https://cdn.poehali.dev/projects/5280268d-e787-4fff-b34a-7365c52e29bd/files/4a19d197-6b3a-473d-a945-f53b476add77.jpg",
   },
 ]
 
@@ -55,36 +58,35 @@ export function MasterclassSection() {
           ))}
         </div>
 
-        <div className="space-y-4 md:space-y-5">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
           {masterclasses.map((mc, i) => {
             const getRevealClass = () => {
-              if (!isVisible) return mc.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
-              return "translate-x-0 opacity-100"
+              if (!isVisible) return "translate-y-12 opacity-0"
+              return "translate-y-0 opacity-100"
             }
 
             return (
               <div
                 key={i}
-                className={`group flex items-start justify-between border-b border-foreground/10 py-4 transition-all duration-700 hover:border-foreground/20 md:py-5 ${getRevealClass()}`}
-                style={{ transitionDelay: `${i * 150}ms` }}
+                className={`group relative overflow-hidden rounded-lg transition-all duration-700 ${getRevealClass()}`}
+                style={{ transitionDelay: `${i * 120}ms` }}
               >
-                <div className="flex gap-4 md:gap-8">
-                  <span className="mt-1 font-mono text-sm text-foreground/30 group-hover:text-foreground/50 transition-colors md:text-base">
-                    {mc.number}
-                  </span>
-                  <div>
-                    <h3 className="mb-1 font-sans text-xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-2 md:text-2xl lg:text-3xl">
-                      {mc.title}
-                    </h3>
-                    <p className="mb-2 max-w-lg font-mono text-xs text-foreground/50 md:text-sm">{mc.description}</p>
-                    <span className="font-mono text-xs text-foreground/40">🕐 {mc.duration}</span>
+                <img
+                  src={mc.image}
+                  alt={mc.title}
+                  className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-56"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <span className="mb-1 block font-mono text-xs text-foreground/50">{mc.number} · 🕐 {mc.duration}</span>
+                  <h3 className="mb-1 font-sans text-lg font-light text-foreground leading-tight">{mc.title}</h3>
+                  <p className="mb-2 font-mono text-xs text-foreground/60 leading-relaxed">{mc.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs text-foreground/70">{mc.price}</span>
+                    <button className="rounded-full border border-foreground/40 bg-black/40 px-3 py-1 font-mono text-xs text-foreground opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 hover:bg-black/60">
+                      Записаться →
+                    </button>
                   </div>
-                </div>
-                <div className="ml-4 flex shrink-0 flex-col items-end gap-2">
-                  <span className="font-mono text-xs text-foreground/50 group-hover:text-foreground/80 transition-colors md:text-sm">{mc.price}</span>
-                  <button className="rounded-full border border-foreground/30 bg-foreground/10 px-3 py-1 font-mono text-xs text-foreground/70 opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-foreground/20 hover:text-foreground">
-                    Записаться →
-                  </button>
                 </div>
               </div>
             )
